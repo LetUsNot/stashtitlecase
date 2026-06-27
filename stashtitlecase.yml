@@ -1,0 +1,10 @@
+name: Stash Title Case
+description: Adds a hover-revealed title case button to the scene edit title field.
+version: 1.1.0
+url: https://github.com/LetUsNot/stashtitlecase
+
+ui:
+  css:
+    - stashtitlecase.css
+  javascript:
+    - stashtitlecase.js

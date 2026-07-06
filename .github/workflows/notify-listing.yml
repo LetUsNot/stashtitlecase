@@ -1,0 +1,24 @@
+name: Notify plugin listing
+
+on:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger listing repo sync
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.LETUSNOT_PLUGINS_SYNC_TOKEN }}
+          repository: LetUsNot/letusnot-stash-plugins
+          event-type: plugin-updated
+          client-payload: |-
+            {
+              "plugin": "${{ github.repository }}",
+              "ref": "${{ github.sha }}"
+            }
